@@ -1,12 +1,10 @@
-const   mongoose = require('mongoose')
-        songModel = require('./song')
+const mongoose = require('mongoose');
 
 var Schema = new mongoose.Schema({
     name: { type: String, required: true },
     image: { type: String },
     songs: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'song'
+        type: Number
     }]
 });
 

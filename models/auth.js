@@ -1,6 +1,6 @@
 const mongoose = require('mongoose'),
-      userPlayList = require('./userPlaylist'),
-      bcrypt = require('bcryptjs');
+      bcrypt = require('bcryptjs'),
+      playlist = require('./playlist')
 
 var userSchema = new mongoose.Schema({
     username: {
@@ -20,7 +20,7 @@ var userSchema = new mongoose.Schema({
     playlist: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'userPlaylist'
+            ref: 'playlist'
         }
     ]
 })
@@ -43,5 +43,4 @@ userSchema.methods.comparePassword = function(password, next) {
     });
 };
 
-var User = mongoose.model('User', userSchema);
-module.exports = User;
+module.exports = mongoose.model('User', userSchema);
